@@ -14,8 +14,8 @@ function HomePage() {
         <div className="homepage-container">
             {/* MUI AppBar Component */}
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
-                    <Toolbar>
+                <AppBar position="static" sx={{ width: '100%' }}>
+                    <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                         <IconButton
                             size="large"
                             edge="start"
@@ -25,7 +25,7 @@ function HomePage() {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6" component="div">
                             Whiteboard Assistant
                         </Typography>
                         <Button color="inherit">Login</Button>
