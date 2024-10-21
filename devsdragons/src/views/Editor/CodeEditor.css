@@ -1,0 +1,44 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: white; 
+  }
+
+.code-editor-container {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.language-selector {
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    font-size: 1rem;
+}
+
+.monaco-editor {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
