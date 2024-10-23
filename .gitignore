@@ -7,3 +7,35 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Ignore node modules changes in parent repo (git initialized) and in react app folder (devsdragons, 
+# which is not git initialized)
+node_modules
+devsdragons/node_modules
+
+
+# Other things within devsdragons to ignore
+
+# Logs
+devsdragons/logs
+devsdragons/*.log
+devsdragons/npm-debug.log*
+devsdragons/yarn-debug.log*
+devsdragons/yarn-error.log*
+devsdragons/pnpm-debug.log*
+devsdragons/lerna-debug.log*
+
+devsdragons/dist
+devsdragons/dist-ssr
+devsdragons/*.local
+
+# Editor directories and files
+devsdragons/.vscode/*
+devsdragons/!.vscode/extensions.json
+devsdragons/.idea
+devsdragons/.DS_Store
+devsdragons/*.suo
+devsdragons/*.ntvs*
+devsdragons/*.njsproj
+devsdragons/*.sln
+devsdragons/*.sw?
