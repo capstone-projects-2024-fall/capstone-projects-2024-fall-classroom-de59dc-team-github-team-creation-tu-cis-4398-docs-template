@@ -1,0 +1,58 @@
+/* MyQuests.css */
+.my-quests-page {
+    padding: 20px;
+    max-width: 1000px; /* Keep a wide max width */
+    margin: 0 auto; /* Center the container horizontally */
+    padding-top: 120px; /* Ensure the container stays below the HUD */
+  }
+  
+  .quest-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .quest-item {
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .quest-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .quest-details {
+    max-width: 70%;
+  }
+  
+  .resume-quest-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .resume-quest-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .no-quests-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  
