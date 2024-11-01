@@ -1,57 +1,64 @@
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=15801588)
 <div align="center">
 
-# Project Name
+# PlantParent
 [![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues)
 [![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml)
-[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://applebaumian.github.io/tu-cis-4398-docs-template/)
-
+[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://capstone-projects-2024-fall.github.io/project-automated-plant-caregiver/)
 
 </div>
 
 
 ## Keywords
 
-Section #, as well as any words that quickly give your peers insights into the application like programming language, development platform, type of application, etc.
+Section 02, React, Figma, Node.js, IoT, Smart Home, Automation, Home Gardening, Sensors, Embedded Systems, Cloud Integration (AWS), Machine Learning, AI
 
 ## Project Abstract
 
-This document proposes a novel application of a text message (SMS or Email) read-out and hands-free call interacted between an Android Smartphone and an infotainment platform (headunit) in a car environment. When a phone receives an SMS or Email, the text message is transferred from the phone to the headunit through a Bluetooth connection. On the headunit, user can control which and when the received SMS or E-mail to be read out through the in-vehicle audio system. The user may press one button on the headunit to activate the hands-free feature to call back the SMS sender.
+This document proposes an application for automating the care of home plants using the Internet of Things. The system will monitor soil moisture, light levels, and temperature using sensors connected to a microcontroller. Data will be processed and analyzed to optimize plant care, with automatic watering, lighting adjustments, and climate control. The user can control and monitor the system remotely via a mobile app or web interface, with real-time alerts and recommendations provided through push notifications.
 
-## High Level Requirement
 
-Describe the requirements – i.e., what the product does and how it does it from a user point of view – at a high level.
+## High-Level Requirement
+
+The product will automate plant care by monitoring environmental conditions and adjusting watering, lighting, and temperature control as needed. Users will interact with the system through a mobile app, receiving real-time updates and recommendations based on data analysis. The system will also have a manual override feature to allow users to control the environment directly.
 
 ## Conceptual Design
 
-Describe the initial design concept: Hardware/software architecture, programming language, operating system, etc.
+The system will consist of an embedded microcontroller connected to various sensors. The microcontroller will process the sensor data and control actuators (such as water pumps and lights). The programming language used will be Python. The mobile app will be developed using a framework like Flutter or React Native, and the backend will be hosted on a cloud platform such as AWS or Google Cloud.
 
 ## Background
 
-The background will contain a more detailed description of the product and a comparison to existing similar projects/products. A literature search should be conducted and the results listed. Proper citation of sources is required. If there are similar open-source products, you should state whether existing source will be used and to what extent. If there are similar closed-source/proprietary products, you should state how the proposed product will be similar and different.
+This project will compare existing open-source projects, like the OpenAg initiative. The system I propose improves upon existing solutions, particularly in the areas of real-time monitoring, machine learning integration for predictive care, and ease of use for non-technical users.
 
 ## Required Resources
+### Hardware Resources: 
+- ESP32 DevKit V1
+- Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
+- BH1750FVJ Light Sensor
+- AM2320 Digital Temperature and Humidity Sensor
+- Submersible 3V DC Water Pump 
+- WS2812B LED Pixel Strip
+### Software Resources: 
+- AWS Amplify
+- AWS EC2
+- AWS S3/DynamoDB
+- Node.js
+- React
+- PlatformIO
+- CSS
 
-Discuss what you need to develop this project. This includes background information you will need to acquire, hardware resources, and software resources. If these are not part of the standard Computer Science Department lab resources, these must be identified early and discussed with the instructor.
-
-## Collaborators
-
-[//]: # ( readme: collaborators -start )
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/ApplebaumIan">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
-            <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/leighflagg">
-            <img src="https://avatars.githubusercontent.com/u/77810293?v=4" width="100;" alt="leighflagg"/>
-            <br />
-            <sub><b>Null</b></sub>
-        </a>
-    </td></tr>
-</table>
-
-[//]: # ( readme: collaborators -end )
+## Steps to Run Locally
+- Clone Repository
+- Open two separate terminals
+- Terminal 1:
+  - cd plantparent (Go to plantparent folder)
+  - npm install (Install dependencies)
+  - npm start (Begin frontend)
+  - Ctrl + click routes stated in terminal
+- Terminal 2:
+  - cd plantparent (Go to plantparent folder)
+  - cd backend (Go to backend folder)
+  - npm install (Install dependencies)
+  - node server.js (Begin backend server)
+  - Navigate to this link http://localhost:3001
+  - If not working change the port number 

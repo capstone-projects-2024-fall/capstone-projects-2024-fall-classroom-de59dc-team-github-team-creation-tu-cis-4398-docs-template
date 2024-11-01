@@ -1,0 +1,89 @@
+/* Container for the entire page */
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns: left half and right half */
+  grid-template-rows: 1fr 1fr;    /* Two rows: top half and bottom half */
+  height: 100vh;                  /* Full viewport height */
+  margin-top: 20px;
+}
+
+/* Left half: image on top, sensor data below */
+.left-half {
+  display: grid;
+  grid-template-rows: 1fr auto; /* Top half for image, bottom for sensor data */
+  grid-row: 1 / 3;              /* Spans the full height of the left half */
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+/* Image container (top-left quarter) */
+.image-container {
+  width: 100%;        /* Full width of the container */
+  max-width: 600px;   /* Set a max width */
+  height: auto;      /* Fixed height for all images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;   /* Ensures large images don't overflow the container */
+  background-color: #ffffff; /* Optional: background color for the image box */
+}
+
+.displayed-image {
+  max-width: 100%;    /* Images will scale down to fit the container */
+  max-height: 300px;   /* Ensures image does not exceed container height */
+  object-fit: contain;  /* Ensures the entire image fits inside the container without distortion */
+}
+
+/* Info container (bottom-left quarter) */
+.info-container {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  flex-shrink: 0;  /* Ensures the text box doesn't move */
+}
+
+/* Right half for dropdown */
+.right-half {
+  grid-column: 2;  /* Right column */
+  grid-row: 1 / 3; /* Spans the full height of the right half */
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Styling for the dropdown menu */
+.plant-dropdown {
+  padding: 8px;  /* Make the dropdown smaller */
+  font-size: 1.1em;  /* Slightly smaller text */
+  border-radius: 15px;  /* Make the dropdown more rounded */
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.plant-dropdown:focus {
+  border-color: #1abc9c;  /* Border color changes on focus */
+}
+
+
+/* Responsive Adjustments for Mobile Devices */
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
+    padding: 10px;
+    gap: 15px;
+    margin-top: 0;
+  }
+
+  .image-container {
+    max-width: 100%;
+  }
+
+  .displayed-image {
+    max-height: 200px;
+  }
+}
