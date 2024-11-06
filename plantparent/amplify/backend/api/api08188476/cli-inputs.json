@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/data": {
+      "name": "/data",
+      "lambdaFunction": "sensorDataHandler",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "read",
+          "update"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+/* Container for the entire page */
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+/* Left half: image and sensor data */
+.left-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image container */
+.image-container {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.displayed-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;                 /* Cursor pointer for interactivity */
+}
+
+.displayed-image:hover {
+  transform: scale(1.05);          /* Slight zoom on hover */
+}
+
+.displayed-image:active {
+  transform: scale(0.95);          /* Slight shrink on click */
+}
+
+/* Sensor Data Container */
+.sensor-data-container {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* Individual Sensor Box Styling */
+.sensor-box {
+  flex: 1;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+}
+
+.light-level {
+  background-color: #fffde7; /* Light yellow */
+}
+
+.soil-moisture {
+  background-color: #e3f2fd; /* Light blue */
+}
+
+.temperature {
+  background-color: #fff3e0; /* Light orange */
+}
