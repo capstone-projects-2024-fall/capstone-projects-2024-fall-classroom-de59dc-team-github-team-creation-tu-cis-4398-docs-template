@@ -1,0 +1,10 @@
+{
+  "resourceName": "dataStorage",
+  "tableName": "dataStorage",
+  "partitionKey": {
+    "fieldName": "temp",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

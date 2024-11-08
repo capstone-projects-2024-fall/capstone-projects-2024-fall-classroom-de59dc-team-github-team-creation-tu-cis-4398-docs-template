@@ -1,0 +1,151 @@
+/* Overall Container */
+.about-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f0f9ff, #cfe6ff);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
+.about-container h2 {
+    font-size: 2.5em;
+    color: #1e90ff;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Section Titles */
+.about-container h3 {
+    font-size: 1.8em;
+    margin-top: 1em;
+    color: #34495e;
+    position: relative;
+    text-align: center;
+}
+
+.about-container h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #1e90ff;
+    margin: 8px auto;
+    border-radius: 2px;
+}
+
+/* Paragraph Styling */
+.about-container p {
+    line-height: 1.6;
+    font-size: 1.1em;
+    color: #34495e;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+/* List Styling */
+.about-container ul {
+    list-style-type: disc; /* Adds bullet points */
+    padding: 0;
+    margin-top: 10px;
+    padding-left: 20px; /* Adds space between bullets and text */
+    text-align: left;
+}
+
+.about-container ul li {
+    font-size: 1.1em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    display: list-item; /* Ensures bullet points appear */
+}
+
+/* Plant Image Styling */
+.plant-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.plant-photo {
+    width: 220px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Wow Section Styling */
+.wow-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.wow-section h4 {
+    font-size: 1.5em;
+    color: #34495e;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.wow-section .plant-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.arrow {
+    font-size: 2em;
+    color: #1e90ff;
+    animation: bounce 1.5s infinite;
+}
+
+/* Arrow bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive Adjustments for Mobile Devices */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 20px;
+    }
+    
+    .about-container h2 {
+        font-size: 2em;
+    }
+    
+    .about-container h3 {
+        font-size: 1.5em;
+    }
+    
+    .about-container p,
+    .about-container ul li {
+        font-size: 1em;
+    }
+    
+    .plant-photo {
+        width: 180px;
+    }
+}

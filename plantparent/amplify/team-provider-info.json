@@ -1,0 +1,33 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plantparent-dev-b979d-authRole",
+      "UnauthRoleArn": "arn:aws:iam::120569646312:role/amplify-plantparent-dev-b979d-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::120569646312:role/amplify-plantparent-dev-b979d-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-plantparent-dev-b979d-deployment",
+      "UnauthRoleName": "amplify-plantparent-dev-b979d-unauthRole",
+      "StackName": "amplify-plantparent-dev-b979d",
+      "StackId": "arn:aws:cloudformation:us-east-1:120569646312:stack/amplify-plantparent-dev-b979d/29139890-93f7-11ef-b820-0affc56c5a05",
+      "AmplifyAppId": "dxagd1ksocllo",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-plantparent-dev-b979d-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "sensorDataHandler": {
+          "deploymentBucketName": "amplify-plantparent-dev-b979d-deployment",
+          "s3Key": "amplify-builds/sensorDataHandler-78736b67674267337647-build.zip"
+        }
+      },
+      "auth": {
+        "plantparent": {}
+      },
+      "storage": {
+        "dataStorage": {}
+      },
+      "api": {
+        "api08188476": {}
+      }
+    }
+  }
+}
