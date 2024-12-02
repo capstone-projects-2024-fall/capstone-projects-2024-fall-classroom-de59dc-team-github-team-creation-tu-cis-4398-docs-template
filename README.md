@@ -1,3 +1,4 @@
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=15801643)
 <div align="center">
 
 # Project Name
@@ -33,7 +34,21 @@ The background will contain a more detailed description of the product and a com
 
 Discuss what you need to develop this project. This includes background information you will need to acquire, hardware resources, and software resources. If these are not part of the standard Computer Science Department lab resources, these must be identified early and discussed with the instructor.
 
+##Instructions
+Ensure you have <a href = 'https://nodejs.org/en/download/package-manager'>NPM/Node.js</a> and python installed before attempting to run the website.
+
+    1. Clone a local copy of CanvasQuest
+    2. Open a terminal window and navigate to the cloned copy's root directory
+    3. Run the following command: cd Canvas_Quest
+    4. Then run: npm install
+    5. Finally, run: npm run dev
+    6. Next, open a new terminal window and navigate to the project's src folder (Canvas_Quest/src)
+    7. Run the following command: pip install requests flask flask-cors
+    8. Finally, run: Python app.py
+    9. In a browser, navigate to http://localhost:5173/ and the site will display.
+
 ## Collaborators
+
 
 [//]: # ( readme: collaborators -start )
 <table>
@@ -42,16 +57,38 @@ Discuss what you need to develop this project. This includes background informat
         <a href="https://github.com/ApplebaumIan">
             <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>Jordan</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/leighflagg">
             <img src="https://avatars.githubusercontent.com/u/77810293?v=4" width="100;" alt="leighflagg"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>Barry</b></sub>
         </a>
-    </td></tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ApplebaumIan">
+            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+            <br />
+            <sub><b>Alyssa</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ApplebaumIan">
+            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+            <br />
+            <sub><b>Iskra</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ApplebaumIan">
+            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+            <br />
+            <sub><b>Madison</b></sub>
+        </a>
+    </td>
+</tr>
 </table>
 
 [//]: # ( readme: collaborators -end )

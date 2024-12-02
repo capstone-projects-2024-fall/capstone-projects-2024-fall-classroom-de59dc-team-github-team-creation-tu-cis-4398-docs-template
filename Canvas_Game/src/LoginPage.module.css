@@ -1,0 +1,95 @@
+.loginContainer {
+    max-width: none !important;
+    background-color: #d1e7fb;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 238px 10px;
+  }
+  
+  @media (max-width: 991px) {
+    .loginContainer {
+      padding: 100px 0;
+    }
+  }
+  
+  .title {
+    color: #757575;
+    text-align: center;
+    letter-spacing: -0.25px;
+    font: 400 57px/64px Roboto;
+  }
+  
+  @media (max-width: 991px) {
+    .title {
+      font-size: 40px;
+    }
+  }
+  
+  .loginForm {
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    min-width: 320px;
+    margin-top: 50px;
+    min-height: 420px;
+    width: 544px;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    padding: 24px 24px 116px;
+    font: var(--sds-typography-body-font-weight-regular) var(--sds-typography-body-size-medium) var(--sds-typography-body-font-family);
+    border: 1px solid #d9d9d9;
+  }
+  
+  @media (max-width: 991px) {
+    .loginForm {
+      margin-top: 40px;
+      padding: 0 20px 100px;
+    }
+  }
+  
+  .buttonGroup {
+    display: flex;
+    margin-top: 50px;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    line-height: 1;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 991px) {
+    .buttonGroup {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+  
+  .button {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #5a5a5a;
+    gap: 8px;
+    overflow: hidden;
+    color: #d9d9d9;
+    flex: 1;
+    margin: auto 0;
+    padding: 12px;
+  }
+  
+  .signUpButton {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #6b9acf;
+    gap: 8px;
+    overflow: hidden;
+    color: var(--sds-color-text-brand-on-brand);
+    flex: 1;
+    margin: auto 0;
+    padding: 12px;
+    border: 1px solid #2c2c2c;
+  }
