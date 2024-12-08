@@ -1,800 +1,891 @@
 openapi: 3.0.2
 info:
-  title: Swagger Petstore - OpenAPI 3.0
-  description: |-
-    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
-    Swagger at [http://swagger.io](http://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
-    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
-    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
-
-    Some useful links:
-    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
-    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
-  termsOfService: http://swagger.io/terms/
-  contact:
-    email: apiteam@swagger.io
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.11
-externalDocs:
-  description: Find out more about Swagger
-  url: http://swagger.io
-servers:
-  - url: /api/v3
+  title: Devs and Dragons - OpenAPI 3.0
+  description: |-
+    Pre-conditions for POST, GET, PATCH, and DELETE REST API calls which are used by the methods of our classes.
+
+
+    POST: An authentication header with the authentication token. A content type header set to `application/json` for a JSON request block. A request body with with a JSON block that specifies values for all data fields (attributes) of the object to be created.
+
+
+    GET: Appropriate endpoint.
+
+
+    PATCH: An authentication header with the authentication token. A content type header set to `application/json` for a JSON request block. A request body with a JSON block that only specifies the data fields intended be changed with new values for the object. Appropriate endpoint.
+
+
+    DELETE: Appropriate endpoint.
+
 tags:
-  - name: pet
-    description: Everything about your Pets
-    externalDocs:
-      description: Find out more
-      url: http://swagger.io
-  - name: store
-    description: Access to Petstore orders
-    externalDocs:
-      description: Find out more about our store
-      url: http://swagger.io
-  - name: user
-    description: Operations about user
+  - name: Quest
+    description: Represents the main action users are pursuing. It is the unit of learning that users must do (aka play) and finish to move forward in the game which affects all the other game and user function. The main core function of Devs and Dragons.
+
+  - name: Guild
+    description: The guild class is responsible for managing guild-related data and functionality of the platform. It allows users to create, join and manage guilds and track information such as current guild members and assigned quests. The class provides functionality for instructors and students.  
+
+  - name: User
+    description: The user class will be used to determine what quest a specific user has made, what guilds and parties a specific user has joined. The class will also be used in authenticating a user account login and deletion.
+
+  - name: Party
+    description: The party class will be used to create and join a party. It will be used to start quests by assiging one specific quest to the party using the Quest ID. The class will be used one last time to delete the party when the party is done with the quest.
+
+  - name: Guild Party
+    description: The guild party class will be used to create and join a guild party within a guild. It will be used to start quests that are assigned to the guild.
+
 paths:
-  /pet:
-    put:
-      tags:
-        - pet
-      summary: Update an existing pet
-      description: Update an existing pet by Id
-      operationId: updatePet
+  /quest:
+    post:
+      tags: 
+      - Quest
+      summary: Create Quest
+      description: Creates a new quest in the database
       requestBody:
-        description: Update an existent pet in the store
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pet'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Pet'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Pet'
+              $ref: '#/components/schemas/pre_created_Quest'
         required: true
       responses:
         '200':
           description: Successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
+          content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
+                $ref: '#/components/schemas/Quest'
         '405':
           description: Validation exception
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
-    post:
+
+  /quest/{quest_id}:
+    get:
       tags:
-        - pet
-      summary: Add a new pet to the store
-      description: Add a new pet to the store
-      operationId: addPet
+      - Quest
+      summary: Retrieve Quest data
+      description: Returns JSON file with `quest_id`, `difficulty`, `number_of_problems`, `problem_topic`, `time_limit`, `creator`, `enemy`, `background`; all the data fields of the Quest class
+      parameters:
+      - name: quest_id
+        in: path
+        description: Unique identifier of quest
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quest'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Quest not found
+
+    patch:
+      tags:
+      - Quest
+      summary: Update Quest Data
+      description: Modifies quest data with only the data field needed to be changed for quest
+      parameters:
+      - name: quest_id
+        in: path
+        description: Unique identifier of quest
+        required: true
+        schema:
+          type: integer
       requestBody:
-        description: Create a new pet in the store
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pet'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Pet'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Pet'
+              $ref: '#/components/schemas/patched_Quest'
         required: true
       responses:
         '200':
           description: Successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
+          content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Pet'
-        '405':
-          description: Invalid input
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
-  /pet/findByStatus:
-    get:
-      tags:
-        - pet
-      summary: Finds Pets by status
-      description: Multiple status values can be provided with comma separated strings
-      operationId: findPetsByStatus
-      parameters:
-        - name: status
-          in: query
-          description: Status values that need to be considered for filter
-          required: false
-          explode: true
-          schema:
-            type: string
-            default: available
-            enum:
-              - available
-              - pending
-              - sold
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid status value
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
-  /pet/findByTags:
-    get:
-      tags:
-        - pet
-      summary: Finds Pets by tags
-      description: Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-      operationId: findPetsByTags
-      parameters:
-        - name: tags
-          in: query
-          description: Tags to filter by
-          required: false
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid tag value
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
-  /pet/{petId}:
-    get:
-      tags:
-        - pet
-      summary: Find pet by ID
-      description: Returns a single pet
-      operationId: getPetById
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet to return
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pet'
+                $ref: '#/components/schemas/patched_Quest'
         '400':
           description: Invalid ID supplied
         '404':
-          description: Pet not found
-      security:
-        - api_key: []
-        - petstore_auth:
-            - write:pets
-            - read:pets
-    post:
-      tags:
-        - pet
-      summary: Updates a pet in the store with form data
-      description: ''
-      operationId: updatePetWithForm
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet that needs to be updated
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: name
-          in: query
-          description: Name of pet that needs to be updated
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: Status of pet that needs to be updated
-          schema:
-            type: string
-      responses:
+          description: Quest not found
         '405':
-          description: Invalid input
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
+          description: Validation exception
+    
     delete:
       tags:
-        - pet
-      summary: Deletes a pet
-      description: ''
-      operationId: deletePet
+      - Quest
+      summary: Remove Quest
+      description: Delete an existing quest from the database
       parameters:
-        - name: api_key
-          in: header
-          description: ''
-          required: false
-          schema:
-            type: string
-        - name: petId
+        - name: quest_id
           in: path
-          description: Pet id to delete
+          description: Unique identifier of quest
           required: true
           schema:
             type: integer
-            format: int64
-      responses:
-        '400':
-          description: Invalid pet value
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
-  /pet/{petId}/uploadImage:
-    post:
-      tags:
-        - pet
-      summary: uploads an image
-      description: ''
-      operationId: uploadFile
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet to update
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: additionalMetadata
-          in: query
-          description: Additional Metadata
-          required: false
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/octet-stream:
-            schema:
-              type: string
-              format: binary
       responses:
         '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiResponse'
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
-  /store/inventory:
-    get:
-      tags:
-        - store
-      summary: Returns pet inventories by status
-      description: Returns a map of status codes to quantities
-      operationId: getInventory
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
-      security:
-        - api_key: []
-  /store/order:
-    post:
-      tags:
-        - store
-      summary: Place an order for a pet
-      description: Place a new order in the store
-      operationId: placeOrder
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Order'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Order'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Order'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-        '405':
-          description: Invalid input
-  /store/order/{orderId}:
-    get:
-      tags:
-        - store
-      summary: Find purchase order by ID
-      description: For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
-      operationId: getOrderById
-      parameters:
-        - name: orderId
-          in: path
-          description: ID of order that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Order'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
+          description: Successful operation
         '400':
           description: Invalid ID supplied
         '404':
-          description: Order not found
-    delete:
-      tags:
-        - store
-      summary: Delete purchase order by ID
-      description: For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
-      operationId: deleteOrder
-      parameters:
-        - name: orderId
-          in: path
-          description: ID of the order that needs to be deleted
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Order not found
+          description: Quest not found
+
   /user:
     post:
       tags:
-        - user
-      summary: Create user
-      description: This can only be done by the logged in user.
-      operationId: createUser
+      - User
+      summary: Create User
+      description: Create new user in the database
+      operationId: create-new-user
       requestBody:
-        description: Created user object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Pre_Created_User'
+        required: true
       responses:
-        default:
-          description: successful operation
+        '200':
+          description: A successful operation generates a user_id and initializes an array of guilds the user is in and the quest they have made to null.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-  /user/createWithList:
-    post:
+                $ref: '#/components/schemas/Post_Created_User'
+        '405':
+          description: Invalid input
+  /user/{user_id}:
+    get:
       tags:
-        - user
-      summary: Creates list of users with given input array
-      description: Creates list of users with given input array
-      operationId: createUsersWithListInput
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/User'
+      - User
+      summary: Get data of a specific user data
+      description: Retrieve data of a specific user
+      operationId: get-user-data
+      parameters:
+        - name: user_id
+          in: path
+          description: User ID of the user 
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: Successful operation
           content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        default:
-          description: successful operation
-  /user/login:
-    get:
-      tags:
-        - user
-      summary: Logs user into the system
-      description: ''
-      operationId: loginUser
-      parameters:
-        - name: username
-          in: query
-          description: The user name for login
-          required: false
-          schema:
-            type: string
-        - name: password
-          in: query
-          description: The password for login in clear text
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          headers:
-            X-Rate-Limit:
-              description: calls per hour allowed by the user
-              schema:
-                type: integer
-                format: int32
-            X-Expires-After:
-              description: date in UTC when token expires
-              schema:
-                type: string
-                format: date-time
-          content:
-            application/xml:
-              schema:
-                type: string
-            application/json:
-              schema:
-                type: string
-        '400':
-          description: Invalid username/password supplied
-  /user/logout:
-    get:
-      tags:
-        - user
-      summary: Logs out current logged in user session
-      description: ''
-      operationId: logoutUser
-      parameters: []
-      responses:
-        default:
-          description: successful operation
-  /user/{username}:
-    get:
-      tags:
-        - user
-      summary: Get user by user name
-      description: ''
-      operationId: getUserByName
-      parameters:
-        - name: username
-          in: path
-          description: 'The name that needs to be fetched. Use user1 for testing. '
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
         '400':
-          description: Invalid username supplied
+          description: Invalid user ID
         '404':
-          description: User not found
-    put:
+          description: User ID not found
+
+    patch:
       tags:
-        - user
-      summary: Update user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
+      - User
+      summary: Update User Data
+      description: Modifies user data with only the data field needed to be changed for user
       parameters:
-        - name: username
+        - name: user_id
           in: path
-          description: name that need to be deleted
+          description: User ID of the user
           required: true
           schema:
-            type: string
+            type: integer
       requestBody:
-        description: Update an existent user in the store
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/Patched_User'
+        required: true
       responses:
-        default:
-          description: successful operation
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patched_User'      
+        '400':
+          description: Invalid User ID
+          
+        '404':
+          description: User not found
+        '405':
+          description: Validation exception
+      
     delete:
       tags:
-        - user
-      summary: Delete user
-      description: This can only be done by the logged in user.
-      operationId: deleteUser
+      - User
+      summary: Delete a specific user
+      description: Remove a user from the database
+      operationId: delete-user-data
       parameters:
-        - name: username
+        - name: user_id
           in: path
-          description: The name that needs to be deleted
+          description: user id of the user
           required: true
           schema:
             type: string
       responses:
+        '200':
+          description: Successful operation
         '400':
-          description: Invalid username supplied
+          description: Invalid User ID
         '404':
           description: User not found
+  
+  /guild:
+     post:
+      tags: 
+      - Guild
+      summary: Create Guild
+      description: Create a new guild in the database for users to join via an unique code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pre_created_Guild'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_created_Guild'
+        '405':
+          description: Validation exception
+
+  /guild/{guild_id}:
+    get:
+      tags:
+      - Guild
+      summary: Retrieve Guild data
+      description: Returns JSON file with `guild_id`, `name`, `description`, `guild_code`, `quest_assigned`, `guild_parties`; all the data fields of the Guild class
+      parameters:
+      - name: guild_id
+        in: path
+        description: Unique identifier of guild
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guild'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Guild not found
+
+    patch:
+      tags:
+      - Guild
+      summary: Update Guild Data
+      description: Modifies guild data with only the data field needed to be changed for guild
+      parameters:
+      - name: guild_id
+        in: path
+        description: Unique identifier of guild
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patched_Guild'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patched_Guild'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Guild not found
+        '405':
+          description: Validation exception
+    
+    delete:
+      tags:
+      - Guild
+      summary: Remove Guild
+      description: Delete an existing Guild from the database
+      parameters:
+        - name: guild_id
+          in: path
+          description: Unique identifier of guild
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Guild not found
+
+  /party:
+    post:
+      tags:
+        - Party
+      summary: Create Party
+      description: Create new party in the database
+      operationId: create-new-party
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pre_Created_Party'
+
+        required: true
+      responses: 
+        '200':
+          description: A successful operation generates a party id and initialized the fields "quest_assigned" chosen by the user, and "users_inside" to 1 as upon creation only the creator will be inside the party.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Party'
+        '405':
+          description: Invalid input
+
+  /party/{party_id}:
+    get:
+      tags:
+        - Party
+      summary: Get data of a specific party
+      description: Retrieve data of a specific party
+      operationId: get-party-data
+      parameters: 
+        - name: party_id
+          in: path
+          description: Party ID of the party 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Party'
+        '400':
+          description: Invalid Party ID
+        '404':
+          description: Party ID not found
+    
+    patch:
+      tags:
+        - Party
+      summary: Update Party Data
+      description: Modifies party data with only the data field needed to be changed for user
+      parameters:
+        - name: party_id
+          in: path
+          description: Party ID of the party
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patched_Party'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patched_Party'
+        '400':
+          description: Invalid Party ID
+        '404':
+          description: Party ID not found
+        '405':
+          description: Validation exception
+  
+    delete:
+        tags:
+          - Party
+        summary: Delete a specific party
+        description: Remove a party from the database
+        operationId: delete-party-data
+        parameters:
+          - name: party_id
+            in: path
+            description: Party ID of the party
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: Successful operation
+          '400':
+            description: Invalid Party ID
+          '404':
+            description: Party ID not found
+
+  /guild/{guild_id}/guild_parties:
+    post:
+      tags:
+        - Guild Party
+      summary: Create Guild Party
+      description: Create new guild party in the database
+      operationId: create-new-guild-party
+      parameters:
+        - name: guild_id
+          in: path
+          description: Guild ID of the guild the guild party is created.
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pre_Created_Guild_Party'
+        required: true
+      responses: 
+        '200':
+          description: A successful operation generates a guild party id and initialized the fields "quest_assigned" chosen by the user, and "users_inside" to 1 as upon creation only the creator will be inside the guild party.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guild_Party'
+        '405':
+          description: Invalid input
+  
+  /guild/{guild_id}/{guild_party_id}:
+    get:
+      tags:
+        - Guild Party
+      summary: Get data of a specific guild party
+      description: Retrieve data of a specific guild party
+      operationId: get-guild-party-data
+      parameters: 
+        - name: guild_id
+          in: path
+          description: Guild ID of the guild the guild party is created.
+          required: true
+          schema:
+            type: integer
+        - name: guild_party_id
+          in: path
+          description: Guild Party ID of the party .
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guild_Party'
+        '400':
+          description: Invalid Guild Party ID
+        '404':
+          description: Guild Party ID not found
+
+    patch:
+      tags:
+        - Guild Party
+      summary: Update Guild Party Data
+      description: Modifies guild party data with only the data field needed to be changed for user
+      parameters:
+        - name: guild_id
+          in: path
+          description: Guild ID of the guild the guild party is created.
+          required: true
+          schema:
+            type: integer
+        - name: guild_party_id
+          in: path
+          description: Guild Party ID of the party.
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patched_Guild_Party'
+        required: true 
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patched_Guild_Party'
+        '400':
+          description: Invalid Guild Party ID
+        '404':
+          description: Guild Party ID not found
+        '405':
+          description: Validation exception
+    
+    delete:
+        tags:
+          - Guild Party
+        summary: Delete a specific guild party
+        description: Remove a guild party from the database
+        operationId: delete-guild-party-data
+        parameters:
+          - name: guild_id
+            in: path
+            description: Guild ID of the guild the guild party is created.
+            required: true
+            schema:
+              type: integer
+          - name: guild_party_id
+            in: path
+            description: Guild Party ID of the party .
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Successful operation
+          '400':
+            description: Invalid Guild Party ID
+          '404':
+            description: Guild Party ID not found
+  
+    
+    
+  
 components:
   schemas:
-    Order:
+    Quest:
       type: object
       properties:
-        id:
+        quest_id:
           type: integer
-          format: int64
-          example: 10
-        petId:
+          example: 45
+          description: Each quest's unique identifier
+        difficulty:
           type: integer
-          format: int64
-          example: 198772
-        quantity:
+          example: 3
+          description: Measured rigor of quest
+        number_of_problems:
           type: integer
-          format: int32
-          example: 7
-        shipDate:
+          example: 20
+          description: Total questions in quest
+        problem_topic:
           type: string
-          format: date-time
-        status:
+          example: "Algorithms"
+          description:  Topic of quest
+        time_limit:
+          type: number
+          example: 30.0
+          description: Total time limit for players finishing quest
+        creator:
           type: string
-          description: Order Status
-          example: approved
-          enum:
-            - placed
-            - approved
-            - delivered
-        complete:
-          type: boolean
-      xml:
-        name: order
-    Customer:
+          example: "get_smart_every_day"
+          description: User who created quest
+        enemy:
+          type: string
+          example: "Alan Turing"
+          description: Quest's villain challenging players with problems
+        background:
+          type: string
+          example: "Tokyo"
+          description: Wallpaper of quest
+
+    pre_created_Quest:
       type: object
       properties:
-        id:
+        difficulty:
           type: integer
-          format: int64
-          example: 100000
-        username:
+          example: 3
+          description: Measured rigor of quest
+        number_of_problems:
+          type: integer
+          example: 20
+          description: Total questions in quest
+        problem_topic:
           type: string
-          example: fehguy
-        address:
-          type: array
-          xml:
-            name: addresses
-            wrapped: true
-          items:
-            $ref: '#/components/schemas/Address'
-      xml:
-        name: customer
-    Address:
+          example: "Algorithms"
+          description:  Topic of quest
+        time_limit:
+          type: number
+          example: 30.0
+          description: Total time limit for players finishing quest
+        creator:
+          type: string
+          example: "get_smart_every_day"
+          description: User who created quest
+        enemy:
+          type: string
+          example: "Alan Turing"
+          description: Quest's villain challenging players with problems
+        background:
+          type: string
+          example: "Tokyo"
+          description: Wallpaper of quest
+
+    patched_Quest:
       type: object
       properties:
-        street:
-          type: string
-          example: 437 Lytton
-        city:
-          type: string
-          example: Palo Alto
-        state:
-          type: string
-          example: CA
-        zip:
-          type: string
-          example: '94301'
-      xml:
-        name: address
-    Category:
-      type: object
-      properties:
-        id:
+        number_of_problems:
           type: integer
-          format: int64
-          example: 1
-        name:
-          type: string
-          example: Dogs
-      xml:
-        name: category
+          example: 30
+          description: Total questions in quest
+
     User:
       type: object
       properties:
-        id:
+        user_id:
           type: integer
-          format: int64
-          example: 10
+          example: 12
+          description: Static ID to specify each user from potential duplicates.
         username:
           type: string
-          example: theUser
-        firstName:
-          type: string
-          example: John
-        lastName:
-          type: string
-          example: James
-        email:
-          type: string
-          example: john@email.com
+          example: AppleIanBaum
+          description: Desired name of the user.
         password:
           type: string
-          example: '12345'
-        phone:
+          example: password123
+          description: Desired password of the user.
+        email:
           type: string
-          example: '12345'
-        userStatus:
-          type: integer
-          description: User Status
-          format: int32
-          example: 1
-      xml:
-        name: user
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      xml:
-        name: tag
-    Pet:
-      required:
-        - name
-        - photoUrls
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 10
-        name:
-          type: string
-          example: doggie
-        category:
-          $ref: '#/components/schemas/Category'
-        photoUrls:
+          example: Apple@baum.com
+          description: An email linked to the user's account for 2FA
+        guilds_in:
           type: array
-          xml:
-            wrapped: true
           items:
             type: string
-            xml:
-              name: photoUrl
-        tags:
+          example: [guild1, guild2]
+          description: The number of guilds a user is in
+        quest_made:
           type: array
-          xml:
-            wrapped: true
           items:
-            $ref: '#/components/schemas/Tag'
-        status:
-          type: string
-          description: pet status in the store
-          enum:
-            - available
-            - pending
-            - sold
-      xml:
-        name: pet
-    ApiResponse:
+            type: string
+          example: [quest1, quest2, quest2]
+    Pre_Created_User:
       type: object
       properties:
-        code:
+        user_name:
+          type: string
+          example: AppleIanBaum
+          description: The desired name of the user.
+        password:
+          type: string
+          example: password123
+          description: The desired password of the user.
+        email:
+          type: string
+          example: Apple@baum.com
+          description: An email linked to the user's acount for 2FA.
+    Post_Created_User:
+      type: object
+      properties:
+        user_id:
           type: integer
-          format: int32
-        type:
+          example: 12
+        user_name:
           type: string
-        message:
+          example: AppleIanBaum
+        password:
           type: string
-      xml:
-        name: '##default'
-  requestBodies:
-    Pet:
-      description: Pet object that needs to be added to the store
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Pet'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/Pet'
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
-  securitySchemes:
-    petstore_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
-          scopes:
-            write:pets: modify pets in your account
-            read:pets: read your pets
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header
+          example: password123
+        email:
+          type: string
+          example: Apple@IanBaum.com
+        guilds_in:
+          type: array
+          items:
+            type: string
+          example: null
+        quest_made:
+          type: array
+          items:
+            type: string
+          example: null
+    Patched_User:
+      type: object
+      properties: 
+        username:
+          type: string
+          example: IanAppleBaum
+          description: Changed username
+    
+    
+    Guild:
+      type: object
+      properties:
+        guild_id:
+          type: integer
+          example: 55
+          description: Unique identifier that helps distinguish between different guilds in the system
+        name:
+          type: string
+          example: Fairy Tale
+          description: Stores the name of the guild to help users identify their guilds
+        guild_code:
+          type: integer
+          example: 1793
+          description: A code used for users to join a guild. It acts as an invite mechanism, allowing users to connect to new or existing guilds
+        quest_assigned:
+          type: array
+          items:
+            type: string
+          example: [assigned_quest1, assigned_quest2, assigned_quest3]
+          description: It is used to track what quest the guild is responsible for. It links to the quest table via Foreign Key(FK)
+        guild_parties:
+          type: array
+          items:
+            type: string
+          example: [guild_party1, guild_party2, guild_party3]
+          description: Organizes guild members into subgroups (parties) for the battle 
+
+    pre_created_Guild:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Fairy Tale
+          description: Stores the name of the guild to help users identify their guilds
+        guild_code:
+          type: integer
+          example: 1793
+          description: A code used for users to join a guild. It acts as an invite mechanism, allowing users to connect to new or existing guilds
+
+    post_created_Guild:
+      type: object
+      properties:
+        guild_id:
+          type: integer
+          example: 55
+          description: Unique identifier that helps distinguish between different guilds in the system
+        name:
+          type: string
+          example: Fairy Tale
+          description: Stores the name of the guild to help users identify their guilds
+        guild_code:
+          type: integer
+          example: 1793
+          description: A code used for users to join a guild. It acts as an invite mechanism, allowing users to connect to new or existing guilds
+        quest_assigned:
+          type: array
+          items:
+            type: string
+          example: null
+          description: It is used to track what quest the guild is responsible for. It links to the quest table via Foreign Key(FK)
+        guild_parties:
+          type: array
+          items:
+            type: string
+          example: null
+          description: Organizes guild members into subgroups (parties) for the battle
+
+    patched_Guild:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Red Claw
+          description: Stores the name of the guild to help users identify their guilds
+
+    Party:
+      type: object
+      properties:
+        party_id:
+          type: integer
+          example: 12
+          description: Static ID to specify each party from potential duplication.
+        name:
+          type: string
+          example: Cool_Guys_Only_Party
+          description: The desired name of the party.
+        party_code:
+          type: integer
+          example: 1234
+          description: The join code required to join the party.
+        quest_assigned:
+          type: integer
+          example: 55
+          description: Each party is assigned to only one quest that will be determined by using the Quest's ID. 
+        users_inside:
+          type: array
+          items:
+            type: string
+          example: [AwsomeGuyJericho]
+          description: The users who have joined the party.
+    Pre_Created_Party:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Cool_Guys_Only_Party
+          description: The desired name of the party.
+        party_code:
+          type: integer
+          example: 1234
+          description: The join code required to join the party.
+    Patched_Party:
+      type: object
+      properties:
+        name: 
+          type: string
+          example: Very_Cool_Guys_Party
+          description: The desired name of the party.
+
+    Guild_Party:
+      type: object
+      properties:
+        guild_party_id:
+          type: integer
+          example: 12
+          description: Static ID to specify each guild party from potential duplication.
+        name:
+          type: string
+          example: Cool_Guys_Only_Guild_Party
+          description: The desired name of the guild party.
+        guild_party_code:
+          type: integer
+          example: 1234
+          description: The join code required to join the guild party.
+        quest_assigned:
+          type: integer
+          example: 55
+          description: Each party is assigned to only one quest that will be determined by using the Quest's ID. 
+        users_inside:
+          type: array
+          items:
+            type: string
+          example: [AwsomeGuyJericho]
+          description: The users who have joined the guild party.
+    Pre_Created_Guild_Party:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Cool_Guys_Only_Guild_Party
+          description: The desired name of the guild party.
+        guild_party_code:
+          type: integer
+          example: 1234
+          description: The join code required to join the guild party.
+    Patched_Guild_Party:
+      type: object
+      properties:
+        name: 
+          type: string
+          example: Very_Cool_Guys_Guild_Party
+          description: The desired name of the guild party.
+
+
