@@ -1,3 +1,4 @@
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=15806178)
 <div align="center">
 
 # Project Name
@@ -39,15 +40,15 @@ Discuss what you need to develop this project. This includes background informat
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/ApplebaumIan">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+        <a href="https://github.com/AnimishTemple">
+            <img src="https://avatars.githubusercontent.com/u/143827597?v=4" width="100;" alt="Animish"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>Animish Tenneti</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/leighflagg">
-            <img src="https://avatars.githubusercontent.com/u/77810293?v=4" width="100;" alt="leighflagg"/>
+            <img src="https://avatars.githubusercontent.com/u/143827597?v=4" width="100;" alt="leighflagg"/>
             <br />
             <sub><b>Null</b></sub>
         </a>
