@@ -1,0 +1,96 @@
+/* CreateQuests.css */
+.create-quest-page {
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  background-color: #252241;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 100vh; /* Ensure it doesn't exceed the viewport height */
+  overflow-y: auto; 
+  
+}
+
+.create-quest-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.quest-form {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 175px); /* Adjust based on padding and other elements */
+  overflow-y: auto;
+}
+
+.form-label {
+  margin-bottom: 15px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.form-textarea {
+  height: 100px;
+  resize: none;
+}
+
+.submit-button {
+  background-color: #ddcf8a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #ddcf8a;
+}
+
+.quest-preview {
+  text-align: left;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-button,
+.finish-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-right: 10px; /* Add space between the buttons */
+}
+
+.back-button:last-of-type,
+.finish-button:last-of-type {
+  margin-right: 0; /* Remove the margin for the last button */
+}
+
+.back-button:hover,
+.finish-button:hover {
+  background-color: #0056b3;
+}

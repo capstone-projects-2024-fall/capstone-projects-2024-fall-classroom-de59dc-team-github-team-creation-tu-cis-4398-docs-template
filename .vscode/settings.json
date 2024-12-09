@@ -1,0 +1,8 @@
+{
+    "git.ignoreLimitWarning": true,
+    "python.testing.pytestArgs": [
+        "devsdragons"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
