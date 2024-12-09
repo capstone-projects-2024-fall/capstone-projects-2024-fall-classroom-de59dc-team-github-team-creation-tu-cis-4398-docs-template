@@ -1,0 +1,249 @@
+.quest-main-page {
+    display: flex;
+    flex-direction: row; /* Align sections side by side */
+    justify-content: space-between; /* Space between left and right sections */
+    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.header {
+    display: flex; /* Enable flexbox */
+    flex-direction: row; /* Arrange items in a row */
+    align-items: center; /* Vertically align items in the center */
+    justify-content: space-between; /* Distribute space between the items */
+    padding: 10px; /* Optional padding for spacing */
+    background-color: darkblue; /* Optional background color for visibility */
+    border: 1px solid #ccc; /* Optional border for visibility */
+    border-radius: 5px; /* Optional rounded corners */
+}
+
+.header h4 {
+    margin: 0; /* Remove default margin for better alignment */
+    font-size: 16px; /* Adjust font size if necessary */
+}
+
+.leave-room-button {
+    background-color: red;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.leave-room-button:hover {
+    background-color: darkred;
+}
+
+.leave-room-button:active {
+    background-color: maroon;
+}
+
+/* Feedback Section */
+.feedback-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback h3 {
+    margin-bottom: 5px;
+    color: white;
+}
+
+.feedback p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* Left Section */
+.content-section {
+    width: 60%; /* Occupy 60% of the width */
+    height: 100%; /* Full height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in dimensions */
+}
+
+/* Game Container Placeholder */
+.game-screen-container {
+    display: flex; /* Flexbox for potential inner layout */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    width: 100%; /* Full width */
+    height: 400px; /* Placeholder height */
+    background-color: lightblue; /* Placeholder background color */
+    margin-bottom: 20px; /* Space below the game container */
+    box-sizing: border-box;
+}
+
+/* Question Display Placeholder */
+.question-display {
+    background-color: darkblue;
+    border: 2px solid grey;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+    font-size: 16px;
+}
+.game-screen {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; 
+    position: relative;
+}
+
+.player-and-enemy {
+    display: flex;
+    flex-direction: column; /* Stack health-bars-container on top of canvas-container */
+    justify-content: center;
+    align-items: center; /* Center both containers */
+    width: 100%; /* Occupy full width */
+    height: 100%; /* Occupy full height */
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Health Bars Container */
+.health-bars-container {
+    display: flex; /* Align health bars in a row */
+    justify-content: space-between; /* Space between player and enemy health bars */
+    align-items: center; /* Align health bars vertically */
+    width: 100%; /* Occupy full width */
+    padding: 10px 20px; /* Optional padding */
+    box-sizing: border-box;
+}
+
+.player-health-bar-container, .enemy-health-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%; /* Each health bar occupies 45% of the width */
+    height: 20px; /* Set height for health bars */
+    background-color: #ccc;
+    border: 1px solid #999;
+    position: relative;
+}
+
+.health-bar-inner {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+}
+
+/* Canvas Container */
+.canvas-container {
+    display: flex; /* Align canvases in a row */
+    justify-content: space-between; /* Space between player and enemy canvases */
+    align-items: flex-start; /* Align canvases vertically */
+    width: 100%; /* Occupy full width */
+    height: 100%; /* Adjust height if needed */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.player-section, .enemy-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%; /* Each canvas occupies 45% of the width */
+}
+
+#playerCanvas{
+    width: 100%; /* Full width of the section */
+    top: -100px !important;
+}
+
+#enemyCanvas {
+    width: 100%;
+    top: -60px !important;
+}
+
+
+/* Right Section */
+.right-container {
+    width: 40%; /* Occupy 40% of the width */
+    display: flex;
+    flex-direction: column; /* Stack timer, chat, and editor vertically */
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Timer Placeholder */
+.timer-container {
+    width: 100%; /* Full width */
+    height: 80px; /* Placeholder height */
+    background-color: lightgreen; /* Placeholder background color */
+    border: 2px solid #4caf50; /* Green border for emphasis */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 20px; /* Space below the timer */
+}
+
+/* Chat Section */
+.chat-container {
+    flex: 1; /* Grow to fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto; /* Enable vertical scrolling for messages */
+    margin-bottom: 20px; /* Space below the chat section */
+    height: 200px; /* Fixed height for now */
+    box-sizing: border-box;
+}
+
+.chat-container input {
+    width: calc(100% - 90px); /* Adjust width to leave space for the button */
+    padding: 8px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.chat-container button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chat-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Code Editor Section */
+.code-editor-container {
+    flex: 2; /* Take remaining space below chat */
+    width: 100%; /* Full width of the right section */
+    background-color: #f1f1f1; /* Placeholder background color */
+    border: 2px solid darkgray; /* Distinct border for placeholder */
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    box-sizing: border-box;
+}
+
