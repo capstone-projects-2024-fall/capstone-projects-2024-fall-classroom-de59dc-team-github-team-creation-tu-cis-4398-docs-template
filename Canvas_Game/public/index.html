@@ -1,0 +1,89 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  body {
+    background: black;
+    margin: 0;
+  }
+
+  canvas {
+    width: 1024px;
+    height: 576px;
+  }
+</style>
+<canvas style="image-rendering: pixelated"></canvas>
+<div style="white-space:nowrap;background-color:black;position:fixed;top:10px;right:10px;"><div id = 'gold' style="display:inline-block;font-size:50px;color:#fadf46;font-style:blippo"></div><img src ='images/coin.png' style="width:50px;height:50px;"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./data/l_Terrain.js"></script>
+<script src="./data/l_Front_Renders.js"></script>
+<script src="./data/l_Front_Renders_2.js"></script>
+<script src="./data/l_Front_Renders_3.js"></script>
+<script src="./data/l_Front_Renders_WS1.js"></script>
+<script src="./data/l_Trees_1.js"></script>
+<script src="./data/l_Trees_2.js"></script>
+<script src="./data/l_Trees_3.js"></script>
+<script src="./data/l_Trees_4.js"></script>
+<script src="./data/l_Landscape_Decorations.js"></script>
+<script src="./data/l_Landscape_Decorations_2.js"></script>
+<script src="./data/l_Houses.js"></script>
+<script src="./data/l_House_Decorations.js"></script>
+<script src="./data/l_House_Decorations_WS5.js"></script>
+<script src="./data/l_House_Decorations_WS4.js"></script>
+<script src="./data/l_House_Decorations_WS1.js"></script>
+<script src="./data/l_House_Decorations_WS0.js"></script>
+<script src="./data/l_Characters.js"></script>
+<script src="./data/l_Collisions.js"></script>
+<script src="./data/collisions.js"></script>
+<script src="./data/collisions_WS0.js"></script>
+<script src="./data/collisions_WS1.js"></script>
+<script src="./data/collisions_WS2.js"></script>
+<script src="./data/collisions_WS3.js"></script>
+<script src="./data/collisions_WS4.js"></script>
+<script src="./data/collisions_WS5.js"></script>
+<script src="./data/l_Houses_WS0.js"></script>
+<script src="./data/l_Houses_WS2.js"></script>
+<script src="./data/l_Houses_WS3.js"></script>
+<script src="./data/l_Houses_WS4.js"></script>
+<script src="./data/l_Houses_WS5.js"></script>
+<script src="./js/utils.js"></script>
+<script src="./classes/CollisionBlock.js"></script>
+<script src="./classes/Player.js"></script>
+<script src="./classes/Monster.js"></script>
+<script src="./classes/Heart.js"></script>
+<script src="./classes/Sprite.js"></script>
+<script src="./classes/NPC2.js"></script>
+<script src="./data/l_houses_WS1.js"></script>
+<script src="./data/loadInAssignments.js"></script>
+
+<div id="dialogueBox" class="container"
+     style="display: none; position: absolute; bottom: 10px; left: 10px; 
+            width: 100; height: auto; background: url('./images/scroll.png') no-repeat center center;">
+  <p id="dialogueText" style="position: relative; top: 10px; left: 20px;">Default text</p>
+</br>
+  <div id="assignmentsList"></div>
+</div>
+
+<div id="inventoryBox" style="display: none; position: fixed; top: 10%; left: 10%; width: 80%; height: 80%; background: rgba(0, 0, 0, 0.9); color: white; border: 2px solid white; border-radius: 8px; overflow-y: auto; padding: 20px;">
+  <h1 style="text-align: center;">Inventory</h1>
+  <ul id="inventoryList"></ul>
+</div>
+
+<div id="popupBox" style="display: none; position: fixed; top: 10%; left: 10%; width: 80%; height: 80%; background: rgba(0, 0, 0, 0.9); color: white; border: 2px solid white; border-radius: 8px; overflow-y: auto; padding: 20px;">
+  <p id="popupBoxText" style="position: relative; top: 10px; left: 20px;">Default text</p>
+  <p id="popupBoxText2" style="position: relative; top: 10px; left: 20px;">Default text</p>
+  <p id="popupBoxText3" style="position: relative; top: 10px; left: 20px;">Default text</p>
+  <p id="popupBoxText4" style="position: relative; top: 10px; left: 20px;">Default text</p>
+</div>
+
+<div id="inspectBox" style="display: none; position: absolute; top: 10%; left: 10%; background-color: white; padding: 10px; border: 1px solid rgb(255, 255, 255);">
+  <!-- Item details will be displayed here -->
+</div>
+<script src="./classes/item.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/eventListeners.js"></script>

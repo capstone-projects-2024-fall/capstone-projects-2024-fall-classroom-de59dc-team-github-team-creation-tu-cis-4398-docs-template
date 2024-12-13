@@ -1,0 +1,228 @@
+.title {
+    color: #757575;
+    text-align: left;
+    letter-spacing: -0.25px;
+    font: 40px Roboto;
+    margin-top: 0;
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  
+  
+  /*Section for the shop squares*/
+
+
+  .imageBoxGroupsContainer {
+    display: flex;
+    gap: 20px; /* Adjust spacing between the groups */
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .imageBoxGroupsContainer2 {
+    display: flex;
+    gap: 20px; /* Adjust spacing between the groups */
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  /*
+    .imageBoxGroup {
+      display: flex;
+      gap: 10px;
+      margin-top: 50px;
+      justify-content: flex-start;   
+      margin-right: 2%;
+      margin-left: 20px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+      */
+    
+      .imageBoxGroup {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping within a group */
+        gap: 16px; /* Space between items */
+        justify-content: flex-start; /* Align items to the start */
+        width: 100%; /* Allow items to use the full container width */
+    }
+    
+
+
+    .imageBoxContainer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 120px;
+      margin-left: 100px;
+      margin-top: 40px;
+    }
+ 
+    
+    .imageCheckbox {
+      display: none;
+    }
+    
+    .imageLabel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    
+    .imageLabel:hover {
+      border-color: #007bff;
+    }
+    
+    .imageCheckbox:checked + .imageLabel {
+      border-color: #007bff;
+    }
+    
+    .image {
+      width: 50px; 
+      height: auto;
+    }
+    
+    span {
+      margin-top: 5px;
+      text-align: center;
+      font: Roboto;
+      color: #757575;
+    }
+  
+    .tooltip {
+        visibility: hidden;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 110%;
+        left: 70%;
+        transform: translateX(-70%) translateX(10px); 
+        white-space: nowrap;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      .tooltip2 {
+        visibility: hidden;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 110%;
+        left: 20%;
+        transform: translateX(-20%);
+        white-space: nowrap;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      
+      .imageLabel:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+        left: 150%;
+      }
+
+      .imageLabel:hover .tooltip2 {
+        visibility: visible;
+        opacity: 1;
+        left: 0%;
+      }
+
+      .buyButton {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        display: block;
+        margin: 20px auto;
+      }
+      
+      .buyButton:hover {
+        background-color: #45a049;
+      }
+      
+      .goldBox {
+        background-color: #ffd700; /* Gold-like color */
+        color: #000; /* Black text */
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        border: 2px solid #b8860b; /* Darker border for contrast */
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        margin-bottom: 30px; /* Space below the gold box */
+        margin-top: 0;
+        margin-left: 1000px;
+        text-align: center;
+        width: fit-content;
+      }
+
+      .buyButton {
+        background-color: #32cd32;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+        width: fit-content;
+      }
+      
+      .buyButton:hover {
+        background-color: #228b22;
+      }
+
+      .spacer {
+        width: 100%;
+        height: 20px; /* Adjust height for spacing */
+      }
+
+      .storeContainer {
+        display: flex;
+        justify-content: center; /* Center both sets horizontally */
+        align-items: flex-start; /* Align the top edges */
+        margin: 20px; /* Adjust margin as needed */
+        margin-left: -20px;
+      }
+      
+      .itemSetsWrapper {
+        display: flex; /* Use flexbox to align the groups side-by-side */
+        gap: 30px; /* Space between the two sets */
+
+        flex-wrap: wrap; /* Enable wrapping for rows */
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      
+      .itemGroup {
+        display: flex;
+        flex-wrap: wrap; /* Ensure items in each set wrap if there's not enough space */
+        gap: 10px; /* Space between items in a group */
+        max-width: 300px; /* Adjust width to control how items flow within a group */
+      }
+
+      .thirdSetContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        width: 100%; /* Ensure it starts a new row */
+        margin-top: 20px; /* Optional spacing */
+    }
